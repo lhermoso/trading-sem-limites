@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////
 // Common code for DLL-based Zorro strategies
 ///////////////////////////////////////////////////////
-//#include "stdafx.h"
+#include "pch.h"
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 #define ZORRO_CPP
 #include <zorro.h>
