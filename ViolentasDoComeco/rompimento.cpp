@@ -1,12 +1,13 @@
 #include "pch.h"
 #include <zorro.h>
 #include "Bots.h"
+#include "Risk.h"
 
 
 void run_rompimento()
 {
 
-	//MaxLong = MaxShort = 1;
+	
 
 	int periodo_compra = optimize(10, 5, 30, 5, 0);
 	int periodo_venda = optimize(10, 5, 30, 5, 0);
@@ -15,6 +16,7 @@ void run_rompimento()
 	{
 		double minima = LL(periodo_compra, 1);
 		double trail = priceClose(0) - minima;
+		SetRisk(true);
 		enterLong(0, 0, minima, 0, trail);
 	}
 
@@ -22,6 +24,7 @@ void run_rompimento()
 	{
 		double maxima = HH(periodo_venda, 1);
 		double trail = maxima - priceClose(0);
+		SetRisk(false);
 		enterShort(0, 0, maxima, 0, trail);
 	}
 

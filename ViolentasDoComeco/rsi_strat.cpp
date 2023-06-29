@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <zorro.h>
 #include "Bots.h"
+#include "Risk.h"
 
 
 
@@ -8,6 +9,7 @@ void run_rsi()
 {
 
 
+	
 	int periodo = (int)round(optimize(14, 7, 21, 3, 0));
 	int compra = optimize(30, 5, 30, 5, 0);
 	int venda = optimize(70, 70, 95, 5, 0);
@@ -18,11 +20,17 @@ void run_rsi()
 
 	if (crossOver(seriesC(), compra))
 	{
+		
+		SetRisk(true);
+		
 		enterLong();
 
 	}
 	else if (crossUnder(seriesC(), venda))
 	{
+		
+		SetRisk(false);
+		
 		enterShort();
 	}
 
@@ -36,6 +44,10 @@ void run_rsi()
 
 		exitShort();
 	}
+
+	plot("RSI", rsi, NEW | LINE, BLUE);
+
+	
 
 
 

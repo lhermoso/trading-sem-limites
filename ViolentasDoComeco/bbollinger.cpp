@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <zorro.h>
 #include "Bots.h"
+#include "Risk.h"
 
 
 void run_bollinger()
@@ -12,11 +13,13 @@ void run_bollinger()
 
 	if (crossOver(seriesC(), rRealLowerBand))
 	{
+		SetRisk(true);
 		enterLong();
 	}
 
 	else if (crossUnder(seriesC(), rRealUpperBand))
 	{
+		SetRisk(false);
 		enterShort();
 	}
 

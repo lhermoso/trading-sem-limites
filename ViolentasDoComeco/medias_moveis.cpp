@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <zorro.h>
 #include "Bots.h"
+#include "Risk.h"
 
 
 void run_medias()
@@ -20,11 +21,13 @@ void run_medias()
 
 
 	if (crossOver(media_rapida, media_lenta)) {
+		SetRisk(true);
 
 		enterLong();
 	}
 
 	else if (crossUnder(media_rapida, media_lenta)) {
+		SetRisk(false);
 
 		enterShort();
 
