@@ -11,6 +11,11 @@ void run_rompimento()
 
 	int periodo_compra = optimize(10, 5, 30, 5, 0);
 	int periodo_venda = optimize(10, 5, 30, 5, 0);
+	int hurst_period = optimize(100, 20, 100, 10, 0);
+
+
+	if (Hurst(seriesC(), hurst_period) <= 0.5)
+		return;
 
 	if (priceClose(0) > HH(periodo_compra, 1))
 	{

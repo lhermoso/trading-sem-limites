@@ -13,22 +13,17 @@ void SetRisk(bool Compra)
 
 		Lots = 1;
 		
-		
 	}
 	else if (!is(FACTORS))
 	{
 		Lots = 1;
-		
+	
 
 	}
 	else {
 
 		double pnl = Compra ? (WinLong - LossLong) : (WinShort - LossShort);
-		double capital = Capital;
-		if (pnl < 0)
-			capital = Capital + pnl;
-		else
-			capital = capital * sqrt(1 + (pnl / capital));
+		double capital = Capital * sqrt(1 + (pnl / Capital));
 
 
 		double capitalPorComponente = capital / sqrt(NumAssetsListed );

@@ -9,7 +9,7 @@
 
 DLLFUNC void run()
 {
-	LookBack = 300 + UnstablePeriod;
+	LookBack = 300 ;
 	BarPeriod = 1440;
 	StartDate = 2020;
 	Capital = 500000;
@@ -17,10 +17,12 @@ DLLFUNC void run()
 
 	NumWFOCycles = 12;
 	NumCores = 8;
-	ReTrainDays = 8 * 7;
+	ReTrainDays = 63;
+
+	assetList("history\\bovespalite.csv");
 
 
-
+	setf(PlotMode, PL_ALL + PL_FINE);
 	if (is(TRAINMODE))
 	{
 		set(PARAMETERS + FACTORS + TESTNOW + PLOTNOW);
@@ -30,7 +32,8 @@ DLLFUNC void run()
 	else
 	{
 
-		set(PARAMETERS + FACTORS);
+		set(PARAMETERS + FACTORS + LOG );
+		
 
 	}
 
@@ -51,7 +54,7 @@ DLLFUNC void run()
 
 
 
-
+	// "rsi" , "medias", "bollinger", "rompimento"
 	while (algo(loop("rsi", "medias", "bollinger", "rompimento")))
 	{
 
